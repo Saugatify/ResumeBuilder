@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <style>
+
+*{
+    margin: 22px;
+    text-decoration: none;
+    cursor:help;
+
+}
+
+
+::selection {
+    background-color: #333; 
+    color: #f5f5f5;
+}
+
+body {
+    font-family: 'Sora', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(252, 250, 250);
+}
+h1{
+font-size: 90px;
+    font-weight: 900;
+    margin-top: 0;
+}
+h2, h3 {
+    font-weight: 700;
+    margin-top: 0;
+}
+p {
+    line-height: 1.6;
+}
+.section {
+    margin-bottom: 30px;
+}
+.project {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+ }
+.contact-info {
+    margin-top: 20px;
+}
+
+#image {
+    width: 100px;
+    border-radius: 70%; 
+    margin-right: 20px;
+   
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #6aab00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+
+
+    </style>
+  
+</head>
+<body>
+    <button id="download">Download PDF</button>
+
+    <div  class="container" id="container">
+        <header>
+            <h1 id="resumename"></h1>
+            <p id="jobtitle"></p>
+        </header>
+        
+        <section id="aboutme" class="section">
+            <p id="resumesummary"></p>
+        </section>
+
+        <section id="techskills" class="section">
+
+        <h2>Tech Skills</h2>
+           
+        <p id="techskills1"></p>
+        <p id="techskills2"></p>
+        <p id="techskills3"></p>
+        <p id="techskills4"></p>
+
+
+         </section>
+        
+        <section id="section">
+            <h2>Projects</h2>
+
+    
+            <div class="project" style="cursor: pointer;" >
+                <h3 id="project1title"></h3>
+                <p id="project1summary"> </p>
+            </div>
+            
+            <div  class="project" style="cursor: pointer;"  id="project" >
+                <h3 id="project2title"></h3>
+                <p id="project2summary"> </p>
+            </div>
+            <div class="project" style="cursor: pointer;"  id="project" >
+                <h3 id="project3title"></h3>
+                <p id="project3summary"> </p>
+            </div>
+
+
+            
+        </section>
+                
+      
+
+        <section id="contactme" class="section">
+            <h2 >Contact Information</h2>
+            <div id="contact-info">
+                <p id="email">Email</p>
+                <p> <a href="" target="_blank" id="github">Github</a></p>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+    
+
+</body>
+
+<script src="index.js"></script>
+
+<script>
+    window.onload= functiontodownload();
+</script>
+
+
+<script>
+window.onload = function () {
+    document.getElementById("download")
+        .addEventListener("click", () => {
+            const data = document.getElementById("container");
+            console.log(data);
+            console.log(window);
+            var opt = {
+                margin: 0.5, // Set margin to 0.5 inch
+                filename: 'Portfolio.pdf',
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: { scale: 5 }, // Scale increased for better quality
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } // 'a4' instead of 'A4'
+            };
+            html2pdf().from(data).set(opt).save();
+        })
+}
+
+</script>
+
+</html>
